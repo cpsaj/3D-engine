@@ -17,11 +17,13 @@ function draw()
   prik2Pos[2] += 1;
   prik1Pos[2] += 1;
 
-  prik1Screen[0] = (prik1Pos[0] * screenZ) / prik1Pos[2]; 
-  prik1Screen[1] = (prik1Pos[1] * screenZ) / prik1Pos[2]; 
-  prik2Screen[0] = (prik2Pos[0] *screenZ) / prik2Pos[2];
-  prik2Screen[1] = (prik2Pos[1] *screenZ) / prik2Pos[2];
+  makePoint(prik1Pos[0], prik1Pos[1], prik1Pos[2]);
+  makePoint(prik2Pos[0], prik2Pos[1], prik2Pos[2]);
+}
 
-  point(prik2Screen[0], prik2Screen[1]);
-  point(prik1Screen[0], prik1Screen[1]);
+function makePoint(x, y, z)
+{
+  let pointScreenX = x * screenZ / z;
+  let pointScreenY = y * screenZ / z;
+  point(pointScreenX, pointScreenY);
 }
