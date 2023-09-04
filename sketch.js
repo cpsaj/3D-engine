@@ -9,12 +9,15 @@ prik8Pos = [-10, -10, -250];
 camPos = [0, 0, 0];
 screenZ = -100;
 
+let vektorMidt;
+
 prik1Screen = [0, 0];
 prik2Screen = [0, 0];
 
 function setup() 
 {
   createCanvas(400, 400);
+  vektorMidt = [width / 2, height / 2];
 }
 
 function draw() 
@@ -47,7 +50,7 @@ function makePoint(x, y, z)
 {
   let pointScreenX = x * screenZ / z;
   let pointScreenY = y * screenZ / z;
-  point(pointScreenX, pointScreenY);
-}
 
+  point(pointScreenX + vektorMidt[0], pointScreenY + vektorMidt[1]);
+}
 
