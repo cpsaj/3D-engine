@@ -33,17 +33,7 @@ function setup()
 function draw() 
 {
   background(220);
-
-  //Laver punkter
-  // makePoint(prik1Pos[0], prik1Pos[1], prik1Pos[2]);
-  // makePoint(prik2Pos[0], prik2Pos[1], prik2Pos[2]);
-  // makePoint(prik3Pos[0], prik3Pos[1], prik3Pos[2]);
-  // makePoint(prik4Pos[0], prik4Pos[1], prik4Pos[2]);
-  // makePoint(prik5Pos[0], prik5Pos[1], prik5Pos[2]);
-  // makePoint(prik6Pos[0], prik6Pos[1], prik6Pos[2]);
-  // makePoint(prik7Pos[0], prik7Pos[1], prik7Pos[2]);
-  // makePoint(prik8Pos[0], prik8Pos[1], prik8Pos[2]);
-
+  makeBox(50, 60, -150, 100, 120, 100);
 }
 
 //Funktion der laver punkter
@@ -55,5 +45,35 @@ function makePoint(x, y, z)
   coordinates = [pointScreenX + vektorMidt[0], pointScreenY + vektorMidt[1]]
 
   return coordinates;
+}
+
+function makeBox(x, y, z, w, h, d)
+{
+  let upperLeftFront = [makePoint(x, y, z)[0], makePoint(x, y, z)[1]];
+  let upperRightFront = [makePoint(x-w, y, z)[0], makePoint(x-w, y, z)[1]];
+  let lowerLeftFront = [makePoint(x, y-h, z)[0], makePoint(x, y-h, z)[1]];
+  let lowerRightFront = [makePoint(x-w, y-h, z)[0], makePoint(x-w, y-h, z)[1]];
+  let upperLeftBack = [makePoint(x, y, z-d)[0], makePoint(x, y, z-d)[1]];
+  let upperRightBack = [makePoint(x-w, y, z-d)[0], makePoint(x-w, y, z-d)[1]];
+  let lowerLeftBack = [makePoint(x, y-h, z-d)[0], makePoint(x, y-h, z-d)[1]];
+  let lowerRightBack = [makePoint(x-w, y-h, z-d)[0], makePoint(x-w, y-h, z-d)[1]];
+
+  //Front face
+  line(upperLeftFront[0], upperLeftFront[1], upperRightFront[0], upperRightFront[1]);
+  line(upperLeftFront[0], upperLeftFront[1], lowerLeftFront[0], lowerLeftFront[1]);
+  line(lowerLeftFront[0], lowerLeftFront[1], lowerRightFront[0], lowerRightFront[1]);
+  line(upperRightFront[0], upperRightFront[1], lowerRightFront[0], lowerRightFront[1]);
+
+  //Back face
+  line(upperLeftBack[0], upperLeftBack[1], upperRightBack[0], upperRightBack[1]);
+  line(upperLeftBack[0], upperLeftBack[1], lowerLeftBack[0], lowerLeftBack[1]);
+  line(lowerLeftBack[0], lowerLeftBack[1], lowerRightBack[0], lowerRightBack[1]);
+  line(upperRightBack[0], upperRightBack[1], lowerRightBack[0], lowerRightBack[1]);
+
+  //Edges
+  line(upperRightBack[0], upperRightBack[1], upperRightFront[0], upperRightFront[1]);
+  line(upperLeftBack[0], upperLeftBack[1], upperLeftFront[0], upperLeftFront[1]);
+  line(lowerRightBack[0], lowerRightBack[1], lowerRightFront[0], lowerRightFront[1]);
+  line(lowerLeftBack[0], lowerLeftBack[1], lowerLeftFront[0], lowerLeftFront[1]);
 }
 
