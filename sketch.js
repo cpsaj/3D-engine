@@ -35,23 +35,25 @@ function draw()
   background(220);
 
   //Laver punkter
-  makePoint(prik1Pos[0], prik1Pos[1], prik1Pos[2]);
-  makePoint(prik2Pos[0], prik2Pos[1], prik2Pos[2]);
-  makePoint(prik3Pos[0], prik3Pos[1], prik3Pos[2]);
-  makePoint(prik4Pos[0], prik4Pos[1], prik4Pos[2]);
-  makePoint(prik5Pos[0], prik5Pos[1], prik5Pos[2]);
-  makePoint(prik6Pos[0], prik6Pos[1], prik6Pos[2]);
-  makePoint(prik7Pos[0], prik7Pos[1], prik7Pos[2]);
-  makePoint(prik8Pos[0], prik8Pos[1], prik8Pos[2]);
+  // makePoint(prik1Pos[0], prik1Pos[1], prik1Pos[2]);
+  // makePoint(prik2Pos[0], prik2Pos[1], prik2Pos[2]);
+  // makePoint(prik3Pos[0], prik3Pos[1], prik3Pos[2]);
+  // makePoint(prik4Pos[0], prik4Pos[1], prik4Pos[2]);
+  // makePoint(prik5Pos[0], prik5Pos[1], prik5Pos[2]);
+  // makePoint(prik6Pos[0], prik6Pos[1], prik6Pos[2]);
+  // makePoint(prik7Pos[0], prik7Pos[1], prik7Pos[2]);
+  // makePoint(prik8Pos[0], prik8Pos[1], prik8Pos[2]);
 
 }
 
 //Funktion der laver punkter
 function makePoint(x, y, z)
 { 
-  let pointScreenX = (x + sliderX.value()) * screenZ / (z+sliderZ.value());
+  let coordinates = [];
+  let pointScreenX = (x + sliderX.value()) * screenZ / (z + sliderZ.value());
   let pointScreenY = (y + sliderY.value()) * screenZ / (z + sliderZ.value());
+  coordinates = [pointScreenX + vektorMidt[0], pointScreenY + vektorMidt[1]]
 
-  point(pointScreenX + vektorMidt[0], pointScreenY + vektorMidt[1]);
+  return coordinates;
 }
 
